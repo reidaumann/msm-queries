@@ -11,11 +11,16 @@ class DirectorsController < ApplicationController
   end
 
   def junior
+    y_bday=Director.where.not({ :dob => nil }).maximum(:dob)
+    @j=Director.where({ :dob => y_bday }).at(0)
+    @bday_string = y_bday.strftime("%B %d, %Y")
     render({:template => "director_templates/youngest"})
   end
 
   def senior 
-    s=Director.where.not({ :dob => nil }).maximum(:dob)
-    render({:template => "director_templates/oldest"})
+    o_bday=Director.where.not({ :dob => nil }).minimum(:dob)
+    @s=Director.where({ :dob => o_bday }).at(0)
+    @o_bday_string = o_bday.strftime("%B %d, %Y")
+    render({:template => "director_templates/eldest"})
   end
 end

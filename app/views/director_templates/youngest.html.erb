@@ -1,3 +1,4 @@
 <h1>Youngest director</h1>
-<% j=Director.where.not({ :dob => nil }).minimum(:dob)%>
-<% j_id=%>
+
+
+<p> The youngest director in our dataset right now is <%= @j.name %>, born on <%=@bday_string%>.  </p>

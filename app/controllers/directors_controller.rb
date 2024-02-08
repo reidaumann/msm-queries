@@ -9,4 +9,11 @@ class DirectorsController < ApplicationController
     @the_director = matching_records.at(0)
     render({:template => "director_templates/details"})
   end
+
+  def junior
+    j=Director.where.not({ :dob => nil }).where({})
+  end
+
+  def senior 
+  end
 end

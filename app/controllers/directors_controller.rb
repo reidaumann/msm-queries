@@ -11,9 +11,11 @@ class DirectorsController < ApplicationController
   end
 
   def junior
-    j=Director.where.not({ :dob => nil }).where({})
+    render({:template => "director_templates/youngest"})
   end
 
   def senior 
+    s=Director.where.not({ :dob => nil }).maximum(:dob)
+    render({:template => "director_templates/oldest"})
   end
 end
